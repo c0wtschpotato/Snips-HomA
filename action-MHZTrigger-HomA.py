@@ -15,7 +15,7 @@ def action_wrapper(hermes, intent_message):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('192.168.1.107', 10000))
     if first in  syn_couch: ###steuerung der Couch An/Aus
-        if second == "an":
+        if second == "an" or second == "":
             s.send(b'11001-3-1')
             result_sentence = first+" an"
         if second == "aus":
@@ -23,7 +23,7 @@ def action_wrapper(hermes, intent_message):
             result_sentence = first+" aus"
     
     if first in  syn_iiyama: ###steuerung der syn_iiyama An/Aus
-        if second == "an":
+        if second == "an" or second == "":
             s.send(b'11001-2-1')
             result_sentence = first+" an"
         if second == "aus":
@@ -31,7 +31,7 @@ def action_wrapper(hermes, intent_message):
             result_sentence = first+" aus"
     
     if first in  syn_fernseher: ###steuerung der syn_fernseher An/Aus
-        if second == "an":
+        if second == "an" or second == "":
             s.send(b'11001-1-1')
             result_sentence = first+" an"
         if second == "aus":
@@ -39,7 +39,7 @@ def action_wrapper(hermes, intent_message):
             result_sentence = first+" aus"
     
     if first in  syn_schlafzimmerlampe: ###steuerung der syn_schlafzimmerlampe An/Aus
-        if second == "an":
+        if second == "an" or second == "":
             s.send(b'11001-4-1')
             result_sentence = first+" an"
         if second == "aus":
@@ -47,11 +47,6 @@ def action_wrapper(hermes, intent_message):
             result_sentence = first+" aus"  
 
     current_session_id = intent_message.session_id
-    else:
-        s.close()
-        result_sentence = "Da ist was schief gelaufen"
-        hermes.publish_end_session(current_session_id, result_sentence)
-   
     s.close()
     result_sentence = ""## andere möglichkeit für silent mode 
     #current_session_id = intent_message.session_id
