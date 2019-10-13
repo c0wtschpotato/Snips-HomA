@@ -1,2 +1,3 @@
 sudo systemctl restart snips-skill-server
 journalctl -u snips-skill-server
+sudo chmod +x action-MHZTrigger-HomA.py
