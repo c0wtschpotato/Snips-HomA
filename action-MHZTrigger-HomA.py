@@ -10,13 +10,19 @@ syn_schlafzimmerlampe = ["schlafzimmerlampe","salzlampe","bettlampe"]
 
 def action_wrapper(hermes, intent_message):
 
-    first = intent_message.slots.Geraet.first().value
-    second = intent_message.slots.AnAus.first().value
-
-    if first = "":
+    
+    try:
+        first = intent_message.slots.Geraet.first().value
+    except:
         result_sentence = "Welches Gerät?"
         current_session_id = intent_message.session_id
         hermes.publish_end_session(current_session_id, result_sentence)
+
+
+    second = intent_message.slots.AnAus.first().value
+
+    
+        
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('192.168.1.107', 10000))
     if first in  syn_couch: ###steuerung der Couch An/Aus
