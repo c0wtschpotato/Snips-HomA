@@ -17,7 +17,7 @@ def action_wrapper(hermes, intent_message):
             s.send(b'11001-3-1')
             result_sentence = first+" an"
         if second == 0:
-            s.send(b'11001-3-1')
+            s.send(b'11001-3-0')
             result_sentence = first+" aus"
     else:
         result_sentence = "Da ist was schief gelaufen"
