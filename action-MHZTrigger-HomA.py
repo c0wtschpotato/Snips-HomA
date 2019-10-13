@@ -44,12 +44,17 @@ def action_wrapper(hermes, intent_message):
             result_sentence = first+" an"
         if second == "aus":
             s.send(b'11001-4-0')
-            result_sentence = first+" aus"    else:
+            result_sentence = first+" aus"  
+
+    current_session_id = intent_message.session_id
+    else:
+        s.close()
         result_sentence = "Da ist was schief gelaufen"
+        hermes.publish_end_session(current_session_id, result_sentence)
    
     s.close()
     result_sentence = ""## andere möglichkeit für silent mode 
-    current_session_id = intent_message.session_id
+    #current_session_id = intent_message.session_id
     #hermes.publish_end_session(current_session_id)##kein result sentence für silent mode, schnellere abwicklung und tests
     hermes.publish_end_session(current_session_id, result_sentence) #nicht silent mode
 
