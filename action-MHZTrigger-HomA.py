@@ -18,10 +18,12 @@ def action_wrapper(hermes, intent_message):
         current_session_id = intent_message.session_id
         hermes.publish_end_session(current_session_id, result_sentence)
 
-
-    second = intent_message.slots.AnAus.first().value
-
-    
+    try:
+        second = intent_message.slots.AnAus.first().value
+    except:
+        result_sentence = "Aktion nicht erkannt"
+        current_session_id = intent_message.session_id
+        hermes.publish_end_session(current_session_id, result_sentence)    
         
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('192.168.1.107', 10000))
