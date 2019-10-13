@@ -12,6 +12,11 @@ def action_wrapper(hermes, intent_message):
 
     first = intent_message.slots.Geraet.first().value
     second = intent_message.slots.AnAus.first().value
+
+    if first = "":
+        result_sentence = "Welches Gerät?"
+        current_session_id = intent_message.session_id
+        hermes.publish_end_session(current_session_id, result_sentence)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('192.168.1.107', 10000))
     if first in  syn_couch: ###steuerung der Couch An/Aus
@@ -52,6 +57,8 @@ def action_wrapper(hermes, intent_message):
     #current_session_id = intent_message.session_id
     #hermes.publish_end_session(current_session_id)##kein result sentence für silent mode, schnellere abwicklung und tests
     hermes.publish_end_session(current_session_id, result_sentence) #nicht silent mode
+
+
 
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:
