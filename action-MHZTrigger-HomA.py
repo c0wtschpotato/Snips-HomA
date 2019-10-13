@@ -3,6 +3,8 @@
 
 from hermes_python.hermes import Hermes
 import socket, time
+syn_couch = ["couch","sofa","led", "LED","kautsch"]
+
 
 def action_wrapper(hermes, intent_message):
 
@@ -10,16 +12,19 @@ def action_wrapper(hermes, intent_message):
     second = intent_message.slots.AnAus.first().value
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('192.168.1.107', 10000))
-    if first == "couch" or first == "sofa"  and second == 1:
-
-        s.send(b'11001-3-1')
-        result_sentence = "An wurde gesendet"
+    if first in  syn_couch:
+        if second == 1:
+            s.send(b'11001-3-1')
+            result_sentence = first+" an"
+        if second == 0:
+            s.send(b'11001-3-1')
+            result_sentence = first+" aus"
     else:
-        result_sentence = ""
+        result_sentence = "Da ist was schief gelaufen"
     time.sleep(3)
     s.send(b'11001-3-0')
     s.close()
-    result_sentence = result_sentence + " " + first
+    
     current_session_id = intent_message.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
 
