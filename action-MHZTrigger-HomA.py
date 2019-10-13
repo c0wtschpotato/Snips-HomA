@@ -26,8 +26,8 @@ def action_wrapper(hermes, intent_message):
     s.close()
     
     current_session_id = intent_message.session_id
-    hermes.publish_end_session(current_session_id, result_sentence)
-
+    hermes.publish_end_session(current_session_id)##kein result sentence für silent mode, schnellere abwicklung und tests
+    #hermes.publish_end_session(current_session_id, result_sentence) #nicht silent mode
 
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:
