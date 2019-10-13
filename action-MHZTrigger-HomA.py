@@ -4,7 +4,7 @@
 from hermes_python.hermes import Hermes
 import socket, time
 syn_couch = ["couch","sofa","led", "LED","kautsch"]
-
+syn_iiyama = ["bildschirm","screen", "ijama","iiyama","iyama","iljama","kleiner"]
 
 def action_wrapper(hermes, intent_message):
 
@@ -21,8 +21,12 @@ def action_wrapper(hermes, intent_message):
             result_sentence = first+" aus"
     else:
         result_sentence = "Da ist was schief gelaufen"
-    time.sleep(1)
-    
+   
+
+
+
+
+        
     s.close()
     
     current_session_id = intent_message.session_id
