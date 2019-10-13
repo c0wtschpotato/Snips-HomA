@@ -21,8 +21,8 @@ def action_wrapper(hermes, intent_message):
             result_sentence = first+" aus"
     else:
         result_sentence = "Da ist was schief gelaufen"
-    time.sleep(3)
-    s.send(b'11001-3-0')
+    time.sleep(31)
+    
     s.close()
     
     current_session_id = intent_message.session_id
