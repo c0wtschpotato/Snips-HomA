@@ -13,15 +13,15 @@ def action_wrapper(hermes, intent_message):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('192.168.1.107', 10000))
     if first in  syn_couch:
-        if second == 1:
+        if second == "an":
             s.send(b'11001-3-1')
             result_sentence = first+" an"
-        if second == 0:
+        if second == "aus":
             s.send(b'11001-3-0')
             result_sentence = first+" aus"
     else:
         result_sentence = "Da ist was schief gelaufen"
-    time.sleep(31)
+    time.sleep(1)
     
     s.close()
     
