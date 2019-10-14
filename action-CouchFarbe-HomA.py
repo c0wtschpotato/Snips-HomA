@@ -20,18 +20,23 @@ def action_wrapper(hermes, intent_message):
 			s.send("couchled-brightness_down-1")
 			s.close()
 			return
-		if programm == "blinken":
+		if programm == "flash":
 			s.send("couchled-programm-flash")
 			s.close()
 			return
-		if programm == "strobo":
+		if programm == "strobe":
 			s.send("couchled-programm-strobe")
 			s.close()
 			return
-		if programm == "weich":
+		if programm == "smooth":
 			s.send("couchled-programm-smooth")
 			s.close()
 			return
+		if programm == "fade":
+			s.send("couchled-programm-fade")
+			s.close()
+			return
+
 
 	try:
 		info = intent_message.slots.GiveInfo.first().value
