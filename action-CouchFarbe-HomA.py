@@ -10,11 +10,11 @@ def action_wrapper(hermes, intent_message):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect(('192.168.1.107', 10000))
 	try:
-        first = intent_message.slots.Geraet.first().value
-    except:
-        result_sentence = "Das hab ich nicht verstanden?"
-        current_session_id = intent_message.session_id
-        hermes.publish_end_session(current_session_id, result_sentence)
+		first = intent_message.slots.Geraet.first().value
+	except:
+		result_sentence = "Das hab ich nicht verstanden?"
+		current_session_id = intent_message.session_id
+		hermes.publish_end_session(current_session_id, result_sentence)
     if first == "grün 4" or first == "grün vier":
 		s.send(b'couchled-color-green4')
 	if first == "grün 3" or first == "grün drei":
