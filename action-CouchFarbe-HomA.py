@@ -10,7 +10,7 @@ def action_wrapper(hermes, intent_message):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect(('192.168.1.107', 10000))
 	try:
-		first = intent_message.slots.Geraet.first().value
+		first = intent_message.slots.Farbe.first().value
 	except:
 		result_sentence = "Das hab ich nicht verstanden? "
 		s.send(b'couchled-color-green4')
