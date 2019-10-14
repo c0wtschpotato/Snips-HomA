@@ -12,9 +12,12 @@ def action_wrapper(hermes, intent_message):
 	try:
 		first = intent_message.slots.Farbe.first().value
 	except:
+		try:
+			info = intent_message.slots.GiveInfo.first().value
+			result_sentence = "Ich kenne rot, grün und blau 1 bis 5. Außerdem pink,lila,violett,türkis, gelb und orange."
+			current_session_id = intent_message.session_id
+		hermes.publish_end_session(current_session_id, result_sentence)
 		result_sentence = "Das hab ich nicht verstanden? "
-		s.send(b'couchled-color-green4')
-		s.close()
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
 	if first == "grün 4" or first == "grün vier":
@@ -48,9 +51,8 @@ def action_wrapper(hermes, intent_message):
 	if first == "rot 1" or first == "rot eins" or first == "rot" or first == "rotes":
 		s.send(b'couchled-color-red1')
 
-	try:
-		info = intent_message.slots.GiveInfo.first().value
-		result_sentence = "Ich kenne rot, grün und blau 1 bis 5. Außerdem pink,lila,violett,türkis, gelb und orange."
+	
+	
 
 	s.close()
 	current_session_id = intent_message.session_id
