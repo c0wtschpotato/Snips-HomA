@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 ###make it executable, maybe git desktop overwrites
 from hermes_python.hermes import Hermes
-import socket, time
+import socket, time, sys
 
 
 def action_wrapper(hermes, intent_message):
@@ -16,7 +16,7 @@ def action_wrapper(hermes, intent_message):
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
 		s.close()
-		quit()
+		sys.exit()
 	except:
 		result_sentence = "Wie bitte?"
 		current_session_id = intent_message.session_id
