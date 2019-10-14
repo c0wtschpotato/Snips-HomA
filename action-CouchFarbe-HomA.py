@@ -10,36 +10,36 @@ def action_wrapper(hermes, intent_message):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect(('192.168.1.107', 10000))
 
-	try:
-		programm = intent_message.slots.LEDProgramm.first().value
-		if programm == "heller" or programm == "hell":
-			s.send("couchled-brightness_up-1")
-			s.close()
-			return
-		if programm == "dunkel" or programm == "dunkler":
-			s.send("couchled-brightness_down-1")
-			s.close()
-			return
-		if programm == "flash":
-			s.send("couchled-programm-flash")
-			s.close()
-			return
-		if programm == "strobe":
-			s.send("couchled-programm-strobe")
-			s.close()
-			return
-		if programm == "smooth":
-			s.send("couchled-programm-smooth")
-			s.close()
-			return
-		if programm == "fade":
-			s.send("couchled-programm-fade")
-			s.close()
-			return
-	except:
-		result_sentence = "!"
-		s.close()
-		return
+	# try:
+	# 	programm = intent_message.slots.LEDProgramm.first().value
+	# 	if programm == "heller" or programm == "hell":
+	# 		s.send("couchled-brightness_up-1")
+	# 		s.close()
+	# 		return
+	# 	if programm == "dunkel" or programm == "dunkler":
+	# 		s.send("couchled-brightness_down-1")
+	# 		s.close()
+	# 		return
+	# 	if programm == "flash":
+	# 		s.send("couchled-programm-flash")
+	# 		s.close()
+	# 		return
+	# 	if programm == "strobe":
+	# 		s.send("couchled-programm-strobe")
+	# 		s.close()
+	# 		return
+	# 	if programm == "smooth":
+	# 		s.send("couchled-programm-smooth")
+	# 		s.close()
+	# 		return
+	# 	if programm == "fade":
+	# 		s.send("couchled-programm-fade")
+	# 		s.close()
+	# 		return
+	# except:
+	# 	result_sentence = "!"
+	# 	s.close()
+	# 	return
 
 	try:
 		info = intent_message.slots.GiveInfo.first().value
