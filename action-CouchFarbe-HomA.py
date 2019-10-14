@@ -38,9 +38,9 @@ def action_wrapper(hermes, intent_message):
 			return
 	except:
 		result_sentence = "!"
-		c.close()
+		s.close()
 		return
-		
+
 	try:
 		info = intent_message.slots.GiveInfo.first().value
 		result_sentence = "Ich kenne rot, grün und blau 1 bis 5  Außerdem pink lila violett türkis  gelb und orang."
