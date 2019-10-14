@@ -11,6 +11,29 @@ def action_wrapper(hermes, intent_message):
 	s.connect(('192.168.1.107', 10000))
 
 	try:
+		programm = intent_message.slots.LEDProgramm.first().value
+		if programm == "heller" or programm == "hell":
+			s.send("couchled-brightness_up-1")
+			s.close()
+			return
+		if programm == "dunkel" or programm == "dunkler":
+			s.send("couchled-brightness_down-1")
+			s.close()
+			return
+		if programm == "blinken":
+			s.send("couchled-programm-flash")
+			s.close()
+			return
+		if programm == "strobo":
+			s.send("couchled-programm-strobe")
+			s.close()
+			return
+		if programm == "weich":
+			s.send("couchled-programm-smooth")
+			s.close()
+			return
+
+	try:
 		info = intent_message.slots.GiveInfo.first().value
 		result_sentence = "Ich kenne rot, grün und blau 1 bis 5  Außerdem pink lila violett türkis  gelb und orang."
 		current_session_id = intent_message.session_id
@@ -18,7 +41,7 @@ def action_wrapper(hermes, intent_message):
 		s.close()
 		return
 	except:
-		result_sentence = "Wie bitte?"
+		result_sentence = ""
 	try:
 		first = intent_message.slots.Farbe.first().value
 	except:
