@@ -36,8 +36,8 @@ def action_wrapper(hermes, intent_message):
 			s.send("couchled-programm-fade")
 			s.close()
 			return
-
-
+	except:
+		result_sentence = "!"
 	try:
 		info = intent_message.slots.GiveInfo.first().value
 		result_sentence = "Ich kenne rot, grün und blau 1 bis 5  Außerdem pink lila violett türkis  gelb und orang."
