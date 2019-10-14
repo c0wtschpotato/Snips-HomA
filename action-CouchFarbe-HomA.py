@@ -8,13 +8,13 @@ import socket, time
 def action_wrapper(hermes, intent_message):
 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(('192.168.1.107', 10000))
-    s.send(b'couchled-color-red1')
+	s.connect(('192.168.1.107', 10000))
+	s.send(b'couchled-color-red1')
 
 
-    s.close()
-    current_session_id = intent_message.session_id
-    result_sentence = ""
+	s.close()
+	current_session_id = intent_message.session_id
+	result_sentence = "Farbe geändert"
 	hermes.publish_end_session(current_session_id, result_sentence)
 
 
