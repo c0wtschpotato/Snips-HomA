@@ -48,7 +48,9 @@ def action_wrapper(hermes, intent_message):
 	if first == "rot 1" or first == "rot eins" or first == "rot" or first == "rotes":
 		s.send(b'couchled-color-red1')
 
-
+	try:
+		info = intent_message.slots.GiveInfo.first().value
+		result_sentence = "Ich kenne rot, grün und blau 1 bis 5. Außerdem pink,lila,violett,türkis, gelb und orange."
 
 	s.close()
 	current_session_id = intent_message.session_id
