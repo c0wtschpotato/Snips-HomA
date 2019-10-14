@@ -19,9 +19,6 @@ def action_wrapper(hermes, intent_message):
 		return
 	except:
 		result_sentence = "Wie bitte?"
-		current_session_id = intent_message.session_id
-		hermes.publish_end_session(current_session_id, result_sentence)
-		s.close()
 	try:
 		first = intent_message.slots.Farbe.first().value
 	except:
