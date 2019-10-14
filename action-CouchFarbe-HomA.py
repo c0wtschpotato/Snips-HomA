@@ -12,11 +12,11 @@ def action_wrapper(hermes, intent_message):
 
 	try:
 		info = intent_message.slots.GiveInfo.first().value
-		result_sentence = "Ich kenne rot, grün und blau 1 bis 5. Außerdem pink,lila,violett,türkis, gelb und orange."
+		result_sentence = "Ich kenne rot, grün und blau 1 bis 5. Außerdem pink lila violett türkis  gelb und orange."
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
 		s.close()
-
+		quit()
 	except:
 		result_sentence = "Wie bitte?"
 		current_session_id = intent_message.session_id
