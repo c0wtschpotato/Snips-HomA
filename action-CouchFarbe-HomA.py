@@ -9,14 +9,16 @@ def action_wrapper(hermes, intent_message):
 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect(('192.168.1.107', 10000))
+
+	try:
+		info = intent_message.slots.GiveInfo.first().value
+		result_sentence = "Ich kenne rot, grün und blau 1 bis 5. Außerdem pink,lila,violett,türkis, gelb und orange."
+		current_session_id = intent_message.session_id
+		hermes.publish_end_session(current_session_id, result_sentence)
 	try:
 		first = intent_message.slots.Farbe.first().value
 	except:
-		try:
-			info = intent_message.slots.GiveInfo.first().value
-			result_sentence = "Ich kenne rot, grün und blau 1 bis 5. Außerdem pink,lila,violett,türkis, gelb und orange."
-			current_session_id = intent_message.session_id
-		hermes.publish_end_session(current_session_id, result_sentence)
+		
 		result_sentence = "Das hab ich nicht verstanden? "
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
