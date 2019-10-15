@@ -39,9 +39,7 @@ def action_wrapper(hermes, intent_message):
 	# 		return
 	except:
 		result_sentence = "!"
-		s.close()
-		current_session_id = intent_message.session_id
-		hermes.publish_end_session(current_session_id, result_sentence)
+
 		
 	try:
 		info = intent_message.slots.GiveInfo.first().value
