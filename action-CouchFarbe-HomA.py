@@ -39,7 +39,7 @@ def action_wrapper(hermes, intent_message):
 	except:
 		result_sentence = "!"
 		s.close()
-		return
+		
 		
 	try:
 		info = intent_message.slots.GiveInfo.first().value
