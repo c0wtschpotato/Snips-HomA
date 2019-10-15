@@ -11,7 +11,7 @@ def action_wrapper(hermes, intent_message):
 	s.connect(('192.168.1.107', 10000))
 
 	try:
-		programm = intent_message.slots.LEDProgramm.first().value
+		programm = intent_message.slots.LEDProgramm.value
 	# 	if programm == "heller" or programm == "hell":
 	# 		s.send(b"couchled-brightness_up-1")
 	# 		s.close()
