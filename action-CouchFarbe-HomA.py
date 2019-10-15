@@ -21,7 +21,7 @@ def action_wrapper(hermes, intent_message):
 	# 		s.close()
 	# 		return
 		if first == "flash":
-
+			#why the fuck
 			s.send(b'couchled-programm-flash')
 			s.close()
 			current_session_id = intent_message.session_id
