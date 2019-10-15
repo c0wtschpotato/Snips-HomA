@@ -10,8 +10,8 @@ def action_wrapper(hermes, intent_message):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect(('192.168.1.107', 10000))
 
-	# try:
-	# 	programm = intent_message.slots.LEDProgramm.value
+	try:
+		programm = intent_message.slots.LEDProgramm.first().value
 	# 	if programm == "heller" or programm == "hell":
 	# 		s.send(b"couchled-brightness_up-1")
 	# 		s.close()
@@ -20,10 +20,12 @@ def action_wrapper(hermes, intent_message):
 	# 		s.send(b"couchled-brightness_down-1")
 	# 		s.close()
 	# 		return
-		# if programm == "flash":
+		if programm == "flash":
 
-		# 	s.send(b'couchled-programm-flash')
-		# 	s.close()
+			s.send(b'couchled-programm-flash')
+			s.close()
+			current_session_id = intent_message.session_id
+			hermes.publish_end_session(current_session_id, result_sentence)
 			
 	# 	if programm == "strobe":
 	# 		s.send(b"couchled-programm-strobe")
@@ -57,10 +59,7 @@ def action_wrapper(hermes, intent_message):
 		result_sentence = "Das hab ich nicht verstanden? "
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
-	if first == "grün 4" or first == "grün vier":
-		# s.send(b'couchled-color-green4')
-		s.send(b'couchled-programm-flash')
-	if first == "grün 3" or first == "grün drei":
+	if first == "grün 4" or first == "grün v9i":
 		s.send(b'couchled-color-green3')
 	if first == "grün 2" or first == "grün zwei":
 		s.send(b'couchled-color-green2')
