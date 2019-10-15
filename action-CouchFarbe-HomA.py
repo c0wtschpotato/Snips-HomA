@@ -37,10 +37,11 @@ def action_wrapper(hermes, intent_message):
 	# 		s.send(b"couchled-programm-fade")
 	# 		s.close()
 	# 		return
-	# except:
-	# 	result_sentence = "!"
-	# 	s.close()
-
+	except:
+		result_sentence = "!"
+		s.close()
+		current_session_id = intent_message.session_id
+		hermes.publish_end_session(current_session_id, result_sentence)
 		
 	try:
 		info = intent_message.slots.GiveInfo.first().value
