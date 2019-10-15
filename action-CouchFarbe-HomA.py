@@ -10,7 +10,7 @@ def action_wrapper(hermes, intent_message):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect(('192.168.1.107', 10000))
 
-	# try:
+	try:
 	# 	programm = intent_message.slots.LEDProgramm.first().value
 	# 	if programm == "heller" or programm == "hell":
 	# 		s.send(b"couchled-brightness_up-1")
@@ -20,10 +20,11 @@ def action_wrapper(hermes, intent_message):
 	# 		s.send(b"couchled-brightness_down-1")
 	# 		s.close()
 	# 		return
-	# 	if programm == "flash":
-	# 		s.send("couchled-programm-flash")
-	# 		s.close()
-	# 		return
+		if programm == "flash":
+
+			s.send(b'couchled-programm-flash')
+			s.close()
+			
 	# 	if programm == "strobe":
 	# 		s.send(b"couchled-programm-strobe")
 	# 		s.close()
