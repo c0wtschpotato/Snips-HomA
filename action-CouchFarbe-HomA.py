@@ -13,11 +13,11 @@ def action_wrapper(hermes, intent_message):
 	try:
 		programm = intent_message.slots.LEDProgramm.first().value
 		if programm == "heller" or programm == "hell":
-			s.send("couchled-brightness_up-1")
+			s.send(b"couchled-brightness_up-1")
 			s.close()
 			return
 		if programm == "dunkel" or programm == "dunkler":
-			s.send("couchled-brightness_down-1")
+			s.send(b"couchled-brightness_down-1")
 			s.close()
 			return
 		if programm == "flash":
@@ -25,15 +25,15 @@ def action_wrapper(hermes, intent_message):
 			s.close()
 			return
 		if programm == "strobe":
-			s.send("couchled-programm-strobe")
+			s.send(b"couchled-programm-strobe")
 			s.close()
 			return
 		if programm == "smooth":
-			s.send("couchled-programm-smooth")
+			s.send(b"couchled-programm-smooth")
 			s.close()
 			return
 		if programm == "fade":
-			s.send("couchled-programm-fade")
+			s.send(b"couchled-programm-fade")
 			s.close()
 			return
 	except:
