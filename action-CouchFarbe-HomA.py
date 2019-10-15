@@ -39,8 +39,8 @@ def action_wrapper(hermes, intent_message):
 	# 		s.send(b"couchled-programm-fade")
 	# 		s.close()
 	# # 		return
-	# except:
-	# 	result_sentence = "!"
+	except:
+		result_sentence = "!"
 
 		
 	try:
