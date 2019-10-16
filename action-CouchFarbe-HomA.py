@@ -59,7 +59,7 @@ def action_wrapper(hermes, intent_message):
 		result_sentence = "Das hab ich nicht verstanden? "
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
-	if first == "grün 4" or first == "grün v9i":
+	if first == "grün 4" or first == "grün vier":
 		s.send(b'couchled-color-green3')
 	if first == "grün 2" or first == "grün zwei":
 		s.send(b'couchled-color-green2')
