@@ -7,7 +7,7 @@ import socket, time, sys
 
 def action_wrapper(hermes, intent_message):
 
-	if len(intent_message) <= 0:
+	if len(str(intent_message)) <= 0:
 		sentence = "Welches Gerät?"
 	else:
 		sentence = "kein code"
