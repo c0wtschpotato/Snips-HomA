@@ -63,5 +63,5 @@ if __name__ == "__main__":
         h.subscribe_intent("c0wtschpotato:Conversational", action_wrapper)\
         .subscribe_intent("c0wtschpotato:Conversational", control_hts) \
         .subscribe_intent("c0wtschpotato:Conversational", control_pc) \
-        .subscribe_intent("c0wtschpotato:Conversational", control_pc)\
+        .subscribe_intent("c0wtschpotato:Conversational", intent_fertig)\
         .start()

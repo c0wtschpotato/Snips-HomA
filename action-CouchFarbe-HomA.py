@@ -3,7 +3,7 @@
 ###make it executable, maybe git desktop overwrites
 from hermes_python.hermes import Hermes
 import socket, time, sys
-
+syn_smooth = ["weich","smooth","sanfter wechsel"]
 
 def action_wrapper(hermes, intent_message):
 
@@ -88,8 +88,17 @@ def action_wrapper(hermes, intent_message):
 	if first == "rot 1" or first == "rot eins" or first == "rot" or first == "rotes":
 		s.send(b'couchled-color-red1')
 
-	
-	
+	#### Programme
+
+	if first == "flash":
+		s.send(b'couchled-programm-flash')
+		s.close()
+	if first == "strobe" or first == "strobo":
+		s.send(b'couchled-programm-strobe')
+		s.close()
+	if first in syn_smooth:
+		s.send(b'couchled-programm-strobe')
+		s.close()
 
 	s.close()
 	current_session_id = intent_message.session_id
