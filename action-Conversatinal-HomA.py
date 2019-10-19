@@ -6,7 +6,7 @@ import socket, time, sys
 intent_hts = "player"
 intent_fertig = "ende"
 intent_PC = "computer"
-
+intent_command = "controlpart"
 
 intent_filter_get_command = [intent_command,intent_fertig]
 
