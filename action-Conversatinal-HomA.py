@@ -16,9 +16,9 @@ def action_wrapper(hermes, intent_message):
 	else:
 		sentence = "okay, weiter"
 		print("message erkannt")
-		hermes.publish_continue_session(intent_message.session_id,sentence,)
+		hermes.publish_continue_session(intent_message.session_id,sentence,[intent_hts,intent_fertig])
 
-	hermes.publish_end_session(intent_message.session_id, sentence,intent_fertig)
+	hermes.publish_end_session(intent_message.session_id, sentence)
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:
         h.subscribe_intent("c0wtschpotato:Conversational", action_wrapper).start()
