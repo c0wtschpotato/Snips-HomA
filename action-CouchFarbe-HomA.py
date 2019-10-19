@@ -91,13 +91,13 @@ def action_wrapper(hermes, intent_message):
 	#### Programme
 
 	if first in syn_blinken:
-		s.send(b'couchled-programm-flash')
+		s.send('couchled','programm','flash')
 		s.close()
 	if first == "strobe" or first == "strobo":
 		s.send(b'couchled-programm-strobe')
 		s.close()
 	if first in syn_smooth:
-		s.send(b'couchled-programm-strobe')
+		s.send(b'couchled-programm-smooth')
 		s.close()
 
 	s.close()
