@@ -10,8 +10,8 @@ def action_wrapper(hermes, intent_message):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect(('192.168.1.107', 10000))
 
-	try:
-		programm = intent_message.slots.LEDProgramm.first().value
+	# try:
+	# 	programm = intent_message.slots.LEDProgramm.first().value
 	# 	if programm == "heller" or programm == "hell":
 	# 		s.send(b"couchled-brightness_up-1")
 	# 		s.close()
@@ -20,12 +20,12 @@ def action_wrapper(hermes, intent_message):
 	# 		s.send(b"couchled-brightness_down-1")
 	# 		s.close()
 	# 		return
-		if programm == "flash":
+		# if programm == "flash":
 
-			s.send(b'couchled-programm-flash')
-			s.close()
-			current_session_id = intent_message.session_id
-			hermes.publish_end_session(current_session_id, result_sentence)
+		# 	s.send(b'couchled-programm-flash')
+		# 	s.close()
+		# 	current_session_id = intent_message.session_id
+		# 	hermes.publish_end_session(current_session_id, result_sentence)
 			
 	# 	if programm == "strobe":
 	# 		s.send(b"couchled-programm-strobe")
@@ -39,8 +39,8 @@ def action_wrapper(hermes, intent_message):
 	# 		s.send(b"couchled-programm-fade")
 	# 		s.close()
 	# # 		return
-	except:
-		result_sentence = "!"
+	# except:
+	# 	result_sentence = "!"
 
 		
 	try:
@@ -87,11 +87,13 @@ def action_wrapper(hermes, intent_message):
 		s.send(b'couchled-color-red2')
 	if first == "rot 1" or first == "rot eins" or first == "rot" or first == "rotes":
 		s.send(b'couchled-color-red1')
+	if first == "weiß":
+		s.send(b'couchled-color-white1')
 
 	#### Programme
 
 	if first in syn_blinken:
-		s.send(b'couchled-color-red1')
+		s.send(b'couchled-programm-flash')
 		s.close()
 	if first == "strobe" or first == "strobo":
 		s.send(b'couchled-programm-strobe')
@@ -99,10 +101,23 @@ def action_wrapper(hermes, intent_message):
 	if first in syn_smooth:
 		s.send(b'couchled-programm-smooth')
 		s.close()
+	if first == "heller":
+		s.send(b'couchled-brightness_up-1')
+		time.sleep(0.1)
+		s.send(b'couchled-brightness_up-1')
+		s.close()
+	if first == "´dunkler":
+		s.send(b'couchled-brightness_down-1')
+		time.sleep(0.1)
+		s.send(b'couchled-brightness_down-1')
+		s.close()
+	if first == "fade":
+		s.send(b'couchled-programm-fade')
+		s.close()
 
 	s.close()
 	current_session_id = intent_message.session_id
-	result_sentence = "Farbe geändert"
+	result_sentence = ""
 	hermes.publish_end_session(current_session_id, result_sentence)
 
 
