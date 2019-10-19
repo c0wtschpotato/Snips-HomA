@@ -3,12 +3,12 @@
 
 from hermes_python.hermes import Hermes
 import socket, time, sys
-intent_hts = "player"
+intent_hts = "hts"
 intent_fertig = "ende"
-intent_PC = "computer"
+intent_PC = "pc"
 intent_command = "controlpart"
 
-intent_filter_get_command = [intent_command,intent_fertig]
+intent_filter_get_command = [intent_hts,intent_fertig,intent_PC]
 
 SessionsStates = {}
 
