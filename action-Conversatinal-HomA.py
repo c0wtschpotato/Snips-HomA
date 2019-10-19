@@ -8,7 +8,7 @@ intent_fertig = "ende"
 intent_PC = "pc"
 intent_command = "controlpart"
 
-intent_filter_get_command = [intent_fertig,intent_PC]
+intent_filter_get_command = [intent_hts,intent_PC]
 
 SessionsStates = {}
 
