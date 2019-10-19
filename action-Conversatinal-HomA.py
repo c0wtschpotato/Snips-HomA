@@ -6,6 +6,8 @@ import socket, time, sys
 
 
 def action_wrapper(hermes, intent_message):
+	current_session_id = intent_message.session_id
+
 
 	if len(str(intent_message)) <= 0:## switched to string for len
 		sentence = "Welches Gerät?"
