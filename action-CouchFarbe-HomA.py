@@ -6,8 +6,8 @@ import socket, time, sys, configparser, os
 syn_smooth = ["weich","smooth","sanfter wechsel"]
 syn_blinken =["blinken", "flash"]
 config = configparser.ConfigParser()
-cfgpath = "cfg.ini'"
-##/home/pi/HomeAutomation-python-Base/
+cfgpath = "/home/pi/HomeAutomation-python-Base/cfg.ini"
+
 def action_wrapper(hermes, intent_message):
 	config.read(cfgpath)
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
