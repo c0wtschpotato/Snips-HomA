@@ -6,46 +6,12 @@ import socket, time, sys, configparser, os
 syn_smooth = ["weich","smooth","sanfter wechsel"]
 syn_blinken =["blinken", "flash"]
 config = configparser.ConfigParser()
-initcfg = configparser.ConfigParser()
-initcfg.read('/home/pi/HomeAutomation-python-Base/cfg.ini')
+cfgpath = "/home/pi/HomeAutomation-python-Base/cfg.ini'"
 
 def action_wrapper(hermes, intent_message):
-
+	config.read(cfgpath)
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect(('192.168.1.107', 10000))
-
-	# try:
-	# 	programm = intent_message.slots.LEDProgramm.first().value
-	# 	if programm == "heller" or programm == "hell":
-	# 		s.send(b"couchled-brightness_up-1")
-	# 		s.close()
-	# 		return
-	# 	if programm == "dunkel" or programm == "dunkler":
-	# 		s.send(b"couchled-brightness_down-1")
-	# 		s.close()
-	# 		return
-		# if programm == "flash":
-
-		# 	s.send(b'couchled-programm-flash')
-		# 	s.close()
-		# 	current_session_id = intent_message.session_id
-		# 	hermes.publish_end_session(current_session_id, result_sentence)
-			
-	# 	if programm == "strobe":
-	# 		s.send(b"couchled-programm-strobe")
-	# 		s.close()
-	# 		return
-	# 	if programm == "smooth":
-	# 		s.send(b"couchled-programm-smooth")
-	# 		s.close()
-	# 		return
-	# 	if programm == "fade":
-	# 		s.send(b"couchled-programm-fade")
-	# 		s.close()
-	# # 		return
-	# except:
-	# 	result_sentence = "!"
-
 		
 	try:
 		info = intent_message.slots.GiveInfo.first().value
@@ -64,7 +30,8 @@ def action_wrapper(hermes, intent_message):
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
 	if first == "grün 4" or first == "grün vier":
-		s.send(b'couchled-color-green3')
+		config.read(os.path.join(os.getcwd(), cfgpath))
+		config["couchled"]["color"] = "green4"
 	if first == "grün 2" or first == "grün zwei":
 		s.send(b'couchled-color-green2')
 	if first == "grün 1" or first == "grün eins" or first == "grün" or first == "grünes":
