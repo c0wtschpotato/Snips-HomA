@@ -4,7 +4,7 @@
 from hermes_python.hermes import Hermes
 import socket, time, sys
 syn_smooth = ["weich","smooth","sanfter wechsel"]
-
+syn_blinken =["blinken", "flash"]
 def action_wrapper(hermes, intent_message):
 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -90,7 +90,7 @@ def action_wrapper(hermes, intent_message):
 
 	#### Programme
 
-	if first == "flash":
+	if first in syn_blinken:
 		s.send(b'couchled-programm-flash')
 		s.close()
 	if first == "strobe" or first == "strobo":
