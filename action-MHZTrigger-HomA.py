@@ -15,6 +15,7 @@ def action_wrapper(hermes, intent_message):
         first = intent_message.slots.Geraet.first().value
     except:
         result_sentence = "Welches Gerät?"
+        s.close()
         current_session_id = intent_message.session_id
         hermes.publish_end_session(current_session_id, result_sentence)
 
