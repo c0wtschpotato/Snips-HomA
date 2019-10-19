@@ -23,7 +23,7 @@ def action_wrapper(hermes, intent_message):
 		sentence = "okay, weiter"
 		print("message erkannt")
 	hermes.publish_continue_session(intent_message.session_id, sentence, intent_filter_get_command)
-	
+	print(str(intent_message))
 
 def control_hts(hermes, intent_message):
 	current_session_id = intent_message.session_id
