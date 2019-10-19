@@ -56,7 +56,7 @@ def action_wrapper(hermes, intent_message):
 		first = intent_message.slots.Farbe.first().value
 	except:
 		
-		result_sentence = "Das hab ich nicht verstanden? "
+		result_sentence = "Das hab ich nicht verstanden"
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
 	if first == "grün 4" or first == "grün vier":
@@ -94,27 +94,26 @@ def action_wrapper(hermes, intent_message):
 
 	if first in syn_blinken:
 		s.send(b'couchled-programm-flash')
-		s.close()
+		
 	if first == "strobe" or first == "strobo":
 		s.send(b'couchled-programm-strobe')
-		s.close()
+		
 	if first in syn_smooth:
 		s.send(b'couchled-programm-smooth')
-		s.close()
+		
 	if first == "heller":
 		s.send(b'couchled-brightness_up-1')
 		time.sleep(0.1)
 		s.send(b'couchled-brightness_up-1')
-		s.close()
-	if first == "´dunkler":
+		
+	if first == "dunkler":
 		s.send(b'couchled-brightness_down-1')
 		time.sleep(0.1)
 		s.send(b'couchled-brightness_down-1')
-		s.close()
+		
 	if first == "fade":
 		s.send(b'couchled-programm-fade')
-		s.close()
-
+		
 	s.close()
 	current_session_id = intent_message.session_id
 	result_sentence = ""
