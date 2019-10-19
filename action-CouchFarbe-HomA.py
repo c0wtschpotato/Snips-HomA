@@ -91,7 +91,7 @@ def action_wrapper(hermes, intent_message):
 	#### Programme
 
 	if first in syn_blinken:
-		s.send('couchled','programm','flash')
+		s.send(b'couchled-color-red1')
 		s.close()
 	if first == "strobe" or first == "strobo":
 		s.send(b'couchled-programm-strobe')
