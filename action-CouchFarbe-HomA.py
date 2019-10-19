@@ -84,9 +84,9 @@ def action_wrapper(hermes, intent_message):
 		
 	if first == "fade":
 		s.send(b'couchled-programm-fade')
-		
+
 	with open(cfgpath, 'w') as configfile:
-    	config.write(configfile)
+		config.write(configfile)
 	s.close()
 	current_session_id = intent_message.session_id
 	result_sentence = ""
