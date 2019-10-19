@@ -2,9 +2,13 @@
 # -*- coding: utf-8 -*-
 ###make it executable, maybe git desktop overwrites
 from hermes_python.hermes import Hermes
-import socket, time, sys
+import socket, time, sys, configparser, os
 syn_smooth = ["weich","smooth","sanfter wechsel"]
 syn_blinken =["blinken", "flash"]
+config = configparser.ConfigParser()
+initcfg = configparser.ConfigParser()
+initcfg.read('/home/pi/HomeAutomation-python-Base/cfg.ini')
+
 def action_wrapper(hermes, intent_message):
 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
