@@ -34,35 +34,62 @@ def action_wrapper(hermes, intent_message):
 		config.read(cfgpath)
 		config['couchled']['color'] = 'green4'
 	if first == "grün 2" or first == "grün zwei":
-		s.send(b'couchled-color-green2')
+		# s.send(b'couchled-color-green2')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "green2"
 	if first == "grün 1" or first == "grün eins" or first == "grün" or first == "grünes":
-		s.send(b'couchled-color-green1')
+		# s.send(b'couchled-color-green1')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "green1"
 	if first == "grün 5" or first == "grün fünf" or first == "türkis" or first == "türkises":
-		s.send(b'couchled-color-green5')
+		# s.send(b'couchled-color-green5')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "green5"
 	if first == "blau 5" or first == "blau fünf" or first == "pink" or first == "pinkes":
-		s.send(b'couchled-color-blue5')
+		# s.send(b'couchled-color-blue5')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "blue5"
 	if first == "blau 4" or first == "blau vier":
-		s.send(b'couchled-color-blue4')
+		# s.send(b'couchled-color-blue4')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "blue4"
 	if first == "blau 3" or first == "blau drei" or first == "lila":
-		s.send(b'couchled-color-blue3')
+		# s.send(b'couchled-color-blue3')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "blue3"
 	if first == "blau 2" or first == "blau zwei" or first == "violett" or first == "violettes":
-		s.send(b'couchled-color-blue2')
+		# s.send(b'couchled-color-blue2')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "blue2"
 	if first == "blau 1" or first == "blau eins" or first == "blau" or first == "blaues":
-		s.send(b'couchled-color-blue1')
+		# s.send(b'couchled-color-blue1')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "blue1"
 	if first == "rot 5" or first == "rot fünf":
-		s.send(b'couchled-color-red5')
+		# s.send(b'couchled-color-red5')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "red5"
 	if first == "rot 4" or first == "rot vier" or first == "gelb" or first == "gelbes":
-		s.send(b'couchled-color-red4')
+		# s.send(b'couchled-color-red4')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "red4"
 	if first == "rot 3" or first == "rot drei":
-		s.send(b'couchled-color-red3')
+		# s.send(b'couchled-color-red3')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "red3"
 	if first == "rot 2" or first == "rot zwei" or first == "orange" or first == "oranges" or first == "orangenes":
-		s.send(b'couchled-color-red2')
+		# s.send(b'couchled-color-red2')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "red2"
 	if first == "rot 1" or first == "rot eins" or first == "rot" or first == "rotes":
-		s.send(b'couchled-color-red1')
+		# s.send(b'couchled-color-red1')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "red1"
 	if first == "weiß":
-		s.send(b'couchled-color-white1')
-
-	#### Programme
+		# s.send(b'couchled-color-white1')
+		config.read(cfgpath)
+		config["couchled"]["color"] = "white1"
+			#### Programme
 
 	if first in syn_blinken:
 		s.send(b'couchled-programm-flash')
