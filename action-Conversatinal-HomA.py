@@ -34,7 +34,7 @@ def control_hts(hermes, intent_message):
 		print("länge war 0")
 	else:
 		sentence = "okay, HTS Steuerung aktiv"
-		print("message erkannt")
+		print(" HTS message erkannt")
 
 
 
@@ -46,8 +46,8 @@ def control_pc(hermes, intent_message):
 		sentence = "Welches Gerät?"
 		print("länge war 0")
 	else:
-		sentence = "okay, HTS Steuerung aktiv"
-		print("message erkannt")
+		sentence = "okay, PC Steuerung aktiv"
+		print(" PC message erkannt")
 
 
 
