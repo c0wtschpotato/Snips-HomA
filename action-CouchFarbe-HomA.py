@@ -31,7 +31,7 @@ def action_wrapper(hermes, intent_message):
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
 	if first == "grün 4" or first == "grün vier":
-		config.read(os.path.join(os.getcwd(), cfgpath))
+		config.read(cfgpath)
 		config['couchled']['color'] = 'green4'
 	if first == "grün 2" or first == "grün zwei":
 		s.send(b'couchled-color-green2')
