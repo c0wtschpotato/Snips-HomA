@@ -11,8 +11,8 @@ cfgpath = "cfg.ini"
 
 def action_wrapper(hermes, intent_message):
 	config.read(cfgpath)
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.connect(('192.168.1.107', 10000))
+	# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	# s.connect(('192.168.1.107', 10000))
 		
 	try:
 		info = intent_message.slots.GiveInfo.first().value
@@ -115,7 +115,7 @@ def action_wrapper(hermes, intent_message):
 
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
-	s.close()
+	# s.close()
 	current_session_id = intent_message.session_id
 	result_sentence = ""
 	hermes.publish_end_session(current_session_id, result_sentence)
