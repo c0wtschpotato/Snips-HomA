@@ -16,7 +16,7 @@ def action_wrapper(hermes, intent_message):
 		
 	try:
 		info = intent_message.slots.GiveInfo.first().value
-		result_sentence = "Ich kenne rot, grün und blau 1 bis 5  Außerdem pink lila violett türkis  gelb und orange."
+		result_sentence = "Ich kenne rot, grün und blau 1 bis 5  Außerdem pink lila violett türkis  gelb und orange. Außerdem kannst du mit mir HTS und den PC steuern"
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
 		# s.close()
@@ -109,7 +109,7 @@ def action_wrapper(hermes, intent_message):
 		# s.send(b'couchled-brightness_down-1')
 		config["couchled"]["brightness_down"] = "1"
 		
-	if first == "weiß":
+	if first == "white 1":
 		config["couchled"]["color"] = "white1"
 
 	with open(cfgpath, 'w') as configfile:
