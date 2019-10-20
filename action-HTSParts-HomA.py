@@ -10,7 +10,7 @@ cfgpath = "cfg.ini"
 
 def action_wrapper(hermes, intent_message):
 	config.read(cfgpath)
-	first = intent_message.slots.Farbe.first().value
+	first = intent_message.slots.HTSParts.first().value
 
 	if first == "an":
 		if config["philips"]["power"] != "1":
