@@ -35,7 +35,8 @@ def action_wrapper(hermes, intent_message):
 		result_sentence = ""
 
 
-
+	with open(cfgpath, 'w') as configfile:
+		config.write(configfile)
 	current_session_id = intent_message.session_id
 	result_sentence = ""
 	hermes.publish_end_session(current_session_id, result_sentence)
