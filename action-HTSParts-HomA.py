@@ -10,7 +10,14 @@ cfgpath = "cfg.ini"
 
 def action_wrapper(hermes, intent_message):
 	config.read(cfgpath)
-	first = intent_message.slots.HTSParts.first().value
+	try:
+		first = intent_message.slots.HTSParts.first().value
+	except:
+		result_sentence = "Fehler"
+		current_session_id = intent_message.session_id
+		hermes.publish_end_session(current_session_id, result_sentence)
+
+	
 
 	if first == "an":
 		if config["philips"]["power"] != "1":
