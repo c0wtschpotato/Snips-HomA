@@ -19,7 +19,7 @@ def action_wrapper(hermes, intent_message):
 		result_sentence = "Ich kenne rot, grün und blau 1 bis 5  Außerdem pink lila violett türkis  gelb und orange."
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
-		s.close()
+		# s.close()
 		return
 	except:
 		result_sentence = ""
@@ -92,26 +92,25 @@ def action_wrapper(hermes, intent_message):
 			#### Programme
 
 	if first in syn_blinken:
-		s.send(b'couchled-programm-flash')
+		config.read(cfgpath)
 		
-	if first == "strobe" or first == "strobo":
-		s.send(b'couchled-programm-strobe')
-		
-	if first in syn_smooth:
-		s.send(b'couchled-programm-smooth')
-		
+	if first == "strobe" or first == "smooth" or first == "fade":
+		# s.send(b'couchled-programm-strobe')
+		config["couchled"]["color"] = first
+	
 	if first == "heller":
-		s.send(b'couchled-brightness_up-1')
-		time.sleep(0.1)
-		s.send(b'couchled-brightness_up-1')
-		
+		# s.send(b'couchled-brightness_up-1')
+		# time.sleep(0.1)
+		# s.send(b'couchled-brightness_up-1')
+		config["couchled"]["brightness_up"] = "1"
 	if first == "dunkler":
-		s.send(b'couchled-brightness_down-1')
-		time.sleep(0.1)
-		s.send(b'couchled-brightness_down-1')
+		# s.send(b'couchled-brightness_down-1')
+		# time.sleep(0.1)
+		# s.send(b'couchled-brightness_down-1')
+		config["couchled"]["brightness_down"] = "1"
 		
-	if first == "fade":
-		s.send(b'couchled-programm-fade')
+	if first == "weiß":
+		config["couchled"]["color"] = "white1"
 
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
