@@ -34,7 +34,7 @@ def action_wrapper(hermes, intent_message):
 	if first == "leiser":
 		config["philips"]["vol_down"] = "1"
 		result_sentence = ""
-	if first == "hdmi":
+	if first == "HDMI":
 		config["philips"]["targetchannel"] = "0"
 		result_sentence = ""
 	if first == "bluetooth":
