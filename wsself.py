@@ -47,6 +47,9 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 
 t = threading.Thread(target=rainbow_cycle_successive,args=(pixels,0.2,))
 t.start()
+
+t.do_run = True
+t.join()
 time.sleep(2)
 print("waited 2")
 t.do_run = False
