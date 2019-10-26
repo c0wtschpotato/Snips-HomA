@@ -36,6 +36,7 @@ def rainbow_cycle_successive(pixels, wait=0.1, keeprunning = False):
 	        	break
 	        else:
 	        	print ("keeprunning is on")
+	        	print(str(t.keeprunning))
 	        if wait > 0:
 	            time.sleep(wait)
 	pixels.clear()
