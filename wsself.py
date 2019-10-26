@@ -51,5 +51,6 @@ time.sleep(2)
 print("waited 2")
 t.do_run = False
 print("do_run off")
+t.join()
 pixels.clear()
 pixels.show() 
