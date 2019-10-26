@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from ws2801example import rainbow_cycle
+from ws2801example import rainbow_cycle, wheel
 import time
 import RPi.GPIO as GPIO
 import threading
