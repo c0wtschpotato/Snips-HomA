@@ -3,7 +3,7 @@
 from ws2801example import rainbow_cycle
 import time
 import RPi.GPIO as GPIO
-from threading import Thread 
+from threading
 # Import the WS2801 module.
 import Adafruit_WS2801
 import Adafruit_GPIO.SPI as SPI
@@ -34,7 +34,7 @@ def rainbow_cycle_successive(pixels, wait=0.1, keeprunning = True):
 
 #while 1:
 
-t = Thread(target=rainbow_cycle_successive,args=(pixels,0.2,True )).start()
+t = threading.Thread(target=rainbow_cycle_successive,args=(pixels,0.2,True )).start()
 time.sleep(2)
 print("waited 2")
 t.keeprunning = False
