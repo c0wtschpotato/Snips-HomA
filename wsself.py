@@ -37,7 +37,7 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 	        	break
 	        else:
 	        	print ("do_run is on")
-	        	print(str(getattr(t,"do_run")))
+	        	# print(str(getattr(t,"do_run")))
 	        if wait > 0:
 	            time.sleep(wait)
 	pixels.clear()
