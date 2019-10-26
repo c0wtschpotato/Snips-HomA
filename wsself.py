@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from ws2801example import rainbow_cycle, wheel
+from ws2801example import  wheel
 import time
 import RPi.GPIO as GPIO
 import threading
@@ -49,6 +49,5 @@ time.sleep(2)
 print("waited 2")
 t.keeprunning = False
 print("keeprunning off")
-pixels.show()
 pixels.clear()
 pixels.show() 
