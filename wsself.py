@@ -9,7 +9,7 @@ import Adafruit_WS2801
 import Adafruit_GPIO.SPI as SPI
 
 # Configure the count of pixels:
-PIXEL_COUNT = 50
+PIXEL_COUNT = 51
  
 # Alternatively specify a hardware SPI connection on /dev/spidev0.0:
 SPI_PORT   = 0
@@ -34,6 +34,8 @@ def rainbow_cycle_successive(pixels, wait=0.1, keeprunning = False):
 	        	pixels.clear()
 	        	print("stopped by if getattr")
 	        	break
+	        else:
+	        	print ("keeprunning is on")
 	        if wait > 0:
 	            time.sleep(wait)
 	pixels.clear()
@@ -46,6 +48,7 @@ t.start()
 time.sleep(2)
 print("waited 2")
 t.keeprunning = False
+print("keeprunning off")
 pixels.show()
 pixels.clear()
 pixels.show() 
