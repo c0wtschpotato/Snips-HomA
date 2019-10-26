@@ -31,6 +31,7 @@ def rainbow_cycle_successive(pixels, wait=0.1, keeprunning = False):
 	        pixels.clear()
 	        if wait > 0:
 	            time.sleep(wait)
+	pixels.clear()
 	print("stopped by getattr")
 
 #while 1:
