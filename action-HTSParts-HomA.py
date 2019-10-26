@@ -40,7 +40,7 @@ def action_wrapper(hermes, intent_message):
 	if first == "bluetooth":
 		config["philips"]["targetchannel"] = "2"
 		result_sentence = ""
-	if first == "pc an"
+	if first == "pc an":
 		config["11001"]["1"] = "1"
 		time.sleep(0.2)
 		config["11001"]["2"] = "1"
