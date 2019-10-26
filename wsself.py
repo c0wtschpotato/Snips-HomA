@@ -29,6 +29,7 @@ def rainbow_cycle_successive(pixels, wait=0.1, keeprunning = False):
 	        pixels.set_pixel(i, wheel(((i * 256 // pixels.count())) % 256) )
 	        pixels.show()
 	        pixels.clear()
+	        print(str(i))
 	        if getattr(t,"keeprunning", False):
 	        	pixels.clear()
 	        	print("stopped by if getattr")
