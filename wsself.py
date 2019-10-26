@@ -19,6 +19,7 @@ pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_
 
 
 def rainbow_cycle_successive(pixels, wait=0.1, keeprunning = True):
+	t = threading.currentThread()
 	while getattr(t,"keeprunning",True):
 	    for i in range(pixels.count()):
 	        # tricky math! we use each pixel as a fraction of the full 96-color wheel
