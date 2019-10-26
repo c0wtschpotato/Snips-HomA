@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 from ws2801example import rainbow_cycle, rainbow_cycle_successive
 import time
 import RPi.GPIO as GPIO
