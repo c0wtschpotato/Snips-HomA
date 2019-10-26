@@ -3,7 +3,7 @@
 from ws2801example import rainbow_cycle
 import time
 import RPi.GPIO as GPIO
-from threading
+import threading
 # Import the WS2801 module.
 import Adafruit_WS2801
 import Adafruit_GPIO.SPI as SPI
