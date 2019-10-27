@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 from hermes_python.hermes import Hermes
 import socket, time, sys, configparser, os, ws2801effects,threading
+import Adafruit_WS2801
+import Adafruit_GPIO.SPI as SPI
+import RPi.GPIO as GPIO
 
 syn_smooth = ["weich","smooth","sanfter wechsel"]
 syn_blinken =["blinken", "flash"]
