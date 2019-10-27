@@ -40,8 +40,8 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 #while 1:
 
 # t = threading.Thread(target=ws2801effects.rainbow_cycle,args=(pixels,0.2,))
-ws2801effects.rainbow_cycle(pixels)
-ws2801effects.brightness_decrease(pixels)
+ws2801effects.appear_from_back(pixels)
+
 do_run = True
 # t.start()
 time.sleep(5)
