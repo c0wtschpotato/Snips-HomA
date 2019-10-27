@@ -111,7 +111,9 @@ def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),nu
             
         pixels.show()         
         time.sleep(sleep_time)
-        
+    pixels.clear()
+    pixels.show()
+    
 
             
  
