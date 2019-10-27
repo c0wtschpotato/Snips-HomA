@@ -13,20 +13,26 @@ def action_wrapper(hermes, intent_message):
 	try:
 		first = intent_message.slots.HTSParts.first().value
 	except:
-		result_sentence = "Fehler"
+		result_sentence = "Fehler bei erstem Befehl"
 		current_session_id = intent_message.session_id
 		hermes.publish_end_session(current_session_id, result_sentence)
+	try:
+		second = intent_message.slots.AnAus.first().value
+		if second == "an":
+			sencond ="1"
+		else:
+			second = "0"
+	except:
+		print("kein zweites Argument ")
 
 	
 
-	if first == "an":
-		if config["philips"]["power"] != "1":
-			config['philips']['power'] = '1'
-			result_sentence = "HTS bereits an"
-	if first == "aus":
-		if config["philips"]["power"] != "0":
-			config['philips']['power'] = '0'
-			result_sentence = "HTS bereits aus"
+	if first == "HTS":
+		if config["philips"]["power"] == second:
+			result_sentence = "HTS nicht geschalten"
+		else:
+			config["philips"]["power"] = second
+
 
 	if first == "lauter":
 		config["philips"]["vol_up"] = "1"
