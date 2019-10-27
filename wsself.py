@@ -20,9 +20,8 @@ pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_
 
 def rainbow_cycle_successive(pixels, wait=0.1):
 
-	t = threading.currentThread()
-	
 	for i in range(pixels.count()):
+		global do_run
 	    # tricky math! we use each pixel as a fraction of the full 96-color wheel
 	    # (thats the i / strip.numPixels() part)
 	    # Then add in j which makes the colors go around per pixel
@@ -31,14 +30,9 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 	    pixels.show()
 	    pixels.clear()
 	    print(str(i))
-	    if getattr(t,"do_run", False):
-	    	pixels.clear()
-	    	print("stopped by if getattr")
+	    if do_run:
 	    	break
-	    else:
-	    	print ("do_run is on")
-	    	print(getattr(t,"do_run"))
-	    if wait > 0:
+		if wait > 0:
 	        time.sleep(wait)
 	pixels.clear()
 	print("stopped by getattr")
@@ -46,13 +40,12 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 #while 1:
 
 t = threading.Thread(target=rainbow_cycle_successive,args=(pixels,0.2,))
-t.do_run = True
+do_run = True
 t.start()
-
-time.sleep(2)
+time.sleep(1)
 print("waited 2")
-t.do_run = False
-print("do_run off")
+do_run = False
 t.join()
+print("do_run off")
 pixels.clear()
 pixels.show() 
