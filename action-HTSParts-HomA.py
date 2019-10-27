@@ -7,6 +7,7 @@ syn_smooth = ["weich","smooth","sanfter wechsel"]
 syn_blinken =["blinken", "flash"]
 config = configparser.ConfigParser()
 cfgpath = "cfg.ini"
+pixels = Adafruit_WS2801.WS2801Pixels(PIXEL_COUNT, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE), gpio=GPIO)
 
 
 
