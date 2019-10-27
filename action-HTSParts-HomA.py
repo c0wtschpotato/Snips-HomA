@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from hermes_python.hermes import Hermes
-import socket, time, sys, configparser, os
+import socket, time, sys, configparser, os, ws2801effects,threading
+
 syn_smooth = ["weich","smooth","sanfter wechsel"]
 syn_blinken =["blinken", "flash"]
 config = configparser.ConfigParser()
@@ -12,6 +13,7 @@ cfgpath = "cfg.ini"
 
 def action_wrapper(hermes, intent_message):
 	config.read(cfgpath)
+	t = threading.Thread(target=ws2801effects.running_on_chain,args=(pixels,(0,0,0),(255,0,0),5,0.05,)).start()
 	try:
 		first = intent_message.slots.HTSParts.first().value
 	except:
