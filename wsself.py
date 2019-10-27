@@ -42,11 +42,11 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 # t = threading.Thread(target=ws2801effects.rainbow_cycle,args=(pixels,0.2,))
 ws2801effects.rainbow_colors(pixels,0.2)
 do_run = True
-t.start()
+# t.start()
 time.sleep(5)
 print("waited 2")
 do_run = False
-t.join()
+# t.join()
 print("do_run off")
 pixels.clear()
 pixels.show() 
