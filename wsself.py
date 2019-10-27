@@ -36,7 +36,7 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 	  		    time.sleep(wait)
 	pixels.clear()
 	print("stopped by getattr")
-	print(getattr(t,"do_run"))
+	
 #while 1:
 
 t = threading.Thread(target=rainbow_cycle_successive,args=(pixels,0.2,))
