@@ -109,10 +109,10 @@ def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),nu
             pixels.set_pixel(k,Adafruit_WS2801.RGB_to_color(basecolor[0],basecolor[1],basecolor[2]))
         print("all white")
         pixels.show()
-        time.sleep(5)
+        time.sleep(1)
         for j in range(i,number_of_running):
             pixels.set_pixel(j,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
-        print("color set")
+            print("color setoon %d"%(j))
         pixels.show() 
         time.sleep(5)           
         
