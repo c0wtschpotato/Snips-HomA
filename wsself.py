@@ -30,7 +30,7 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 		pixels.show()
 		pixels.clear()
 		print(str(i))
-		if do_run:
+		if do_run == False:
 			break
 		if wait > 0:
 	  		    time.sleep(wait)
