@@ -26,7 +26,7 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 		# (thats the i / strip.numPixels() part)
 		# Then add in j which makes the colors go around per pixel
 		# the % 96 is to make the wheel cycle around
-		pixels.set_pixel(i, ws2801effects.wheel(((i * 256 // pixels.count())) % 256) )
+		pixels.set_pixel(i, ws2801effectss.wheel(((i * 256 // pixels.count())) % 256) )
 		pixels.show()
 		pixels.clear()
 		print(str(i))
@@ -39,7 +39,7 @@ def rainbow_cycle_successive(pixels, wait=0.1):
 	
 #while 1:
 
-t = threading.Thread(target=rainbow_cycle_successive,args=(pixels,0.2,))
+t = threading.Thread(target=ws2801effects.rainbow_cycle,args=(pixels,0.2,))
 do_run = True
 t.start()
 time.sleep(5)
