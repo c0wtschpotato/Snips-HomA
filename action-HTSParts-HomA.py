@@ -49,9 +49,9 @@ def action_wrapper(hermes, intent_message):
 	if first == "pc":
 		
 		config["11001"]["1"] = second
-		time.sleep(0.2)
+		time.sleep(1)
 		config["11001"]["2"] = second
-		time.sleep(0.2)
+		time.sleep(1)
 		config["philips"]["power"] = second
 		result_sentence = "PC geschalten"
 		
