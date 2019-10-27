@@ -96,6 +96,7 @@ def appear_from_back(pixels, color=(255, 0, 0)):
             time.sleep(0.001)
 
 def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),number_of_running=(5),sleep_time=(0.1)):
+    global do_run
     for i in range(pixels.count()):
         pixels.set_pixel(i,Adafruit_WS2801.RGB_to_color(basecolor[0],basecolor[1],basecolor[2]))
     pixels.show()
@@ -113,7 +114,7 @@ def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),nu
         time.sleep(sleep_time)
     pixels.clear()
     pixels.show()
-    
+
 
             
  
