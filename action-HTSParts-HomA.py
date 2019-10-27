@@ -53,7 +53,7 @@ def action_wrapper(hermes, intent_message):
 		config["11001"]["2"] = second
 		time.sleep(0.2)
 		config["philips"]["power"] = second
-		result_sentence = "pc läuft"
+		result_sentence = "PC geschalten"
 		
 
 		
