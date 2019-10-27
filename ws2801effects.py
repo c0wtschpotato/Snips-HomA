@@ -95,7 +95,7 @@ def appear_from_back(pixels, color=(255, 0, 0)):
             pixels.show()
             time.sleep(0.001)
 
-def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),number_of_running=(5),time=(1)):
+def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),number_of_running=(5),sleep_time=(1)):
     for i in range(pixels.count()):
         pixels.set_pixel(i,Adafruit_WS2801.RGB_to_color(basecolor[0],basecolor[1],basecolor[2]))
    
@@ -106,7 +106,7 @@ def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),nu
     for i in range(pixels.count()):
         for j in range(0,number_of_running):
             pixels.set_pixel(i,Adafruit_WS2801.RGB_to_color(runningcolor[0],runningcolor[1],runningcolor[2]))
-            time.sleep(time)
+            time.sleep(sleep_time)
     pixels.show()
 
 
