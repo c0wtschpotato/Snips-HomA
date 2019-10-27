@@ -8,6 +8,8 @@ config = configparser.ConfigParser()
 cfgpath = "cfg.ini"
 
 
+
+
 def action_wrapper(hermes, intent_message):
 	config.read(cfgpath)
 	try:
@@ -48,10 +50,16 @@ def action_wrapper(hermes, intent_message):
 		result_sentence = "schalte um"
 	if first == "pc":		
 		config["11001"]["1"] = second
-		time.sleep(1)
+		with open(cfgpath, 'w') as configfile:
+			config.write(configfile)
+		time.sleep(0.2)
 		config["11001"]["2"] = second
-		time.sleep(1)
+		with open(cfgpath, 'w') as configfile:
+			config.write(configfile)
+		time.sleep(0.2)
 		config["philips"]["power"] = second
+		with open(cfgpath, 'w') as configfile:
+			config.write(configfile)
 		result_sentence = "PC geschalten"
 		
 
@@ -60,7 +68,7 @@ def action_wrapper(hermes, intent_message):
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
 	current_session_id = intent_message.session_id
-	result_sentence = ""
+	
 	hermes.publish_end_session(current_session_id, result_sentence)
 
 
