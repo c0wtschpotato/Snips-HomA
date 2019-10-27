@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from ws2801example import  wheel
+import ws2801example
 import time
 import RPi.GPIO as GPIO
 import threading
