@@ -19,7 +19,7 @@ def action_wrapper(hermes, intent_message):
 	try:
 		second = intent_message.slots.AnAus.first().value
 		if second == "an":
-			sencond ="1"
+			second ="1"
 		else:
 			second = "0"
 	except:
@@ -46,8 +46,7 @@ def action_wrapper(hermes, intent_message):
 	if first == "bluetooth":
 		config["philips"]["targetchannel"] = "2"
 		result_sentence = "schalte um"
-	if first == "pc":
-		
+	if first == "pc":		
 		config["11001"]["1"] = second
 		time.sleep(1)
 		config["11001"]["2"] = second
