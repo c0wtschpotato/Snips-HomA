@@ -118,7 +118,7 @@ def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),nu
 def lightning(pixels):
     global do_run
     for i in range(pixels.count()):
-        pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(32,30,82))## dunkelblaue base
+        pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(32,30,182))## dunkelblaue base
     pixels.show()
 
 
