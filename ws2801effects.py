@@ -121,11 +121,12 @@ def lightning(pixels):
         for i in range(pixels.count()):
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(0,0,255))## dunkelblaue base
         pixels.show()
-        time.sleep(5)
-        which = int(random(0,PIXEL_COUNT))
+        time.sleep(randrange(0,25))
+        which = randrange(0,PIXEL_COUNT)
         for i in range(which,which +4):
             pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))
-     
+        pixels.show()
+        time.sleep(randrange(1,3))
 
         # pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))## hellblauer blitz
 
