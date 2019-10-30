@@ -1,5 +1,5 @@
 # Simple demo of of the WS2801/SPI-like addressable RGB LED lights.
-import time
+import time, random
 import RPi.GPIO as GPIO
  
 # Import the WS2801 module.
@@ -116,17 +116,16 @@ def running_on_chain(pixels,basecolor = (255,255,255),runningcolor= (255,0,0),nu
     #pixels.show()
 
 def lightning(pixels):
-    global do_run
-    for i in range(pixels.count()):
-        pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(0,0,255))## dunkelblaue base
-    pixels.show()
-    time.sleep(5)
-    for i in range(18,23):
-        pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))
-    time.sleep(8)
-    for i in range(pixels.count()):
-        pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(0,0,255))
-
+    while 1:
+        global do_run
+        for i in range(pixels.count()):
+            pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(0,0,255))## dunkelblaue base
+        pixels.show()
+        time.sleep(5)
+        which = int(random(0,PIXEL_COUNT))
+        for i in range(which,which +4):
+            pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))
+     
 
         # pixels.set_pixel(i, Adafruit_WS2801.RGB_to_color(21,131,148))## hellblauer blitz
 
