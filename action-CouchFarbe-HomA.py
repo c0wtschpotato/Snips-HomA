@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 ###make it executable, maybe git desktop overwrites
 from hermes_python.hermes import Hermes
-import socket, time, sys, configparser, os
+import socket, time, sys, configparser, os,json
+import paho.mqtt.client as mqtt
 syn_smooth = ["weich","smooth","sanfter wechsel"]
 syn_blinken =["blinken", "flash"]
 config = configparser.ConfigParser()
 cfgpath = "cfg.ini"
 #/home/pi/HomeAutomation-python-Base/
-
+client = mqtt.Client()
+client.connect(HOST, 1883, 60)
 def action_wrapper(hermes, intent_message):
 	config.read(cfgpath)
 	# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -33,58 +35,79 @@ def action_wrapper(hermes, intent_message):
 	if first == "grün 4" or first == "grün vier":
 		config.read(cfgpath)
 		config['couchled']['color'] = 'green4'
+		colorcomb = {"r":"10","g":"255","b":"60"}
+
 	if first == "grün 2" or first == "grün zwei":
 		# s.send(b'couchled-color-green2')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "green2"
+		colorcomb = {"r":"0","g":"255","b":"10"}
 	if first == "grün 1" or first == "grün eins" or first == "grün" or first == "grünes":
 		# s.send(b'couchled-color-green1')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "green1"
+		colorcomb = {"r":"0","g":"255","b":"0"}
+
 	if first == "grün 5" or first == "grün fünf" or first == "türkis" or first == "türkises":
 		# s.send(b'couchled-color-green5')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "green5"
+		colorcomb = {"r":"10","g":"255","b":"60"}
 	if first == "blau 5" or first == "blau fünf" or first == "pink" or first == "pinkes":
 		# s.send(b'couchled-color-blue5')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "blue5"
+		colorcomb = {"r":"230","g":"0","b":"80"}
+
 	if first == "blau 4" or first == "blau vier":
 		# s.send(b'couchled-color-blue4')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "blue4"
+		colorcomb = {"r":"230","g":"0","b":"60"}
+
 	if first == "blau 3" or first == "blau drei" or first == "lila":
 		# s.send(b'couchled-color-blue3')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "blue3"
+		colorcomb = {"r":"230","g":"0","b":"115"}
+
 	if first == "blau 2" or first == "blau zwei" or first == "violett" or first == "violettes":
 		# s.send(b'couchled-color-blue2')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "blue2"
+		colorcomb = {"r":"204","g":"0","b":"153"}
+
 	if first == "blau 1" or first == "blau eins" or first == "blau" or first == "blaues":
 		# s.send(b'couchled-color-blue1')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "blue1"
+		colorcomb = {"r":"50","g":"0","b":"255"}
+
 	if first == "rot 5" or first == "rot fünf":
 		# s.send(b'couchled-color-red5')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "red5"
+		colorcomb = {"r":"255","g":"180","b":"0"}
 	if first == "rot 4" or first == "rot vier" or first == "gelb" or first == "gelbes":
 		# s.send(b'couchled-color-red4')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "red4"
+		colorcomb = {"r":"255","g":"130","b":"0"}
 	if first == "rot 3" or first == "rot drei":
 		# s.send(b'couchled-color-red3')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "red3"
+		colorcomb = {"r":"255","g":"100","b":"0"}
 	if first == "rot 2" or first == "rot zwei" or first == "orange" or first == "oranges" or first == "orangenes":
 		# s.send(b'couchled-color-red2')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "red2"
+		colorcomb = {"r":"255","g":"50","b":"0"}
 	if first == "rot 1" or first == "rot eins" or first == "rot" or first == "rotes":
 		# s.send(b'couchled-color-red1')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "red1"
+		colorcomb = {"r":"255","g":"0","b":"0"}
 	if first == "weiß":
 		# s.send(b'couchled-color-white1')
 		config.read(cfgpath)
@@ -115,6 +138,12 @@ def action_wrapper(hermes, intent_message):
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
 	# s.close()
+	payload ={
+			"function":"setalltocolor",
+			"basecolor":colorcomb
+			}
+	client.publish("HomA/ledstrip1/set_status",payload)
+	data = json.dumps(payload)
 	current_session_id = intent_message.session_id
 	result_sentence = ""
 	hermes.publish_end_session(current_session_id, result_sentence)
