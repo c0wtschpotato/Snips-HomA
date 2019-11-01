@@ -142,7 +142,7 @@ def action_wrapper(hermes, intent_message):
 		config.write(configfile)
 	# s.close()
 	payload ={
-			"function":"setalltocolor",
+			"function":"running_on_chain",
 			"basecolor":{"r":"255","g":"120","b":"60"},
 			"runningcolor":{"r":"255","g":"0","b":"0"},
 			"number_of_running":"5",
