@@ -140,10 +140,8 @@ def action_wrapper(hermes, intent_message):
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
 	# s.close()
-	payload ={
-			"function":"setalltocolor",
-			"basecolor":colorcomb
-			}
+	payload ={"function":"setalltocolor",
+			"basecolor":colorcomb}
 	data = json.dumps(payload)
 	client.publish("HomA/ledstrip1/set_status",data)
 	
