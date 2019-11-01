@@ -114,6 +114,7 @@ def action_wrapper(hermes, intent_message):
 		# s.send(b'couchled-color-white1')
 		config.read(cfgpath)
 		config["couchled"]["color"] = "white1"
+		colorcomb = {"r":"255","g":"120","b":"60"}
 			#### Programme
 
 	if first in syn_blinken:
@@ -140,8 +141,13 @@ def action_wrapper(hermes, intent_message):
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
 	# s.close()
-	payload ={"function":"setalltocolor",
-			"basecolor":colorcomb}
+	payload ={
+			"function":"running_on_chain",
+			"basecolor":{"r":"55","g":"55","b":"55"},
+			"runningcolor":{"r":"255","g":"0","b":"0"},
+			"number_of_running":"5",
+			"sleep_time":"0.1"
+			}
 	data = json.dumps(payload)
 	client.publish("HomA/ledstrip1/set_status",data)
 	
