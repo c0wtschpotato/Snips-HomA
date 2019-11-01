@@ -9,6 +9,8 @@ syn_blinken =["blinken", "flash"]
 config = configparser.ConfigParser()
 cfgpath = "cfg.ini"
 #/home/pi/HomeAutomation-python-Base/
+HOST = '192.168.1.103'
+PORT = 1883
 client = mqtt.Client()
 client.connect(HOST, 1883, 60)
 def action_wrapper(hermes, intent_message):
