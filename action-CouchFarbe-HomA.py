@@ -12,12 +12,12 @@ cfgpath = "cfg.ini"
 HOST = '192.168.1.103'
 PORT = 1883
 client = mqtt.Client()
-client.connect(HOST, 1883, 60)
+
 def action_wrapper(hermes, intent_message):
 	config.read(cfgpath)
 	# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	# s.connect(('192.168.1.107', 10000))
-		
+	client.connect(HOST, 1883, 60)
 	try:
 		info = intent_message.slots.GiveInfo.first().value
 		result_sentence = "Ich kenne rot, grün und blau 1 bis 5  Außerdem pink lila violett türkis  gelb und orange. Außerdem kannst du mit mir HTS und den PC steuern"
@@ -142,7 +142,7 @@ def action_wrapper(hermes, intent_message):
 		config.write(configfile)
 	# s.close()
 	payload ={"function":"setalltocolor",
-		"basecolor":{"r":"255","g":"120","b":"60"},
+		"basecolor":colorcomb,
 		"runningcolor":{"r":"255","g":"0","b":"0"},
 		"number_of_running":"5",
 		"sleep_time":"0.1"}
