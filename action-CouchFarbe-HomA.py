@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+
 ###make it executable, maybe git desktop overwrites
 from hermes_python.hermes import Hermes
 import socket, time, sys, configparser, os,json
