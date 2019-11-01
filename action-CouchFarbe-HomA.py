@@ -145,7 +145,7 @@ def action_wrapper(hermes, intent_message):
 			"basecolor":colorcomb
 			}
 	data = json.dumps(payload)
-	client.publish("HomA/ledstrip1/set_status",payload)
+	client.publish("HomA/ledstrip1/set_status",data)
 	
 	current_session_id = intent_message.session_id
 	result_sentence = ""
