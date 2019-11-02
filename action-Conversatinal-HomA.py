@@ -60,8 +60,8 @@ def control_fertig(hermes, intent_message):
 
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:
-        h.subscribe_intent("c0wtschpotato:Conversational", action_wrapper)\
-        .subscribe_intent("c0wtschpotato:Conversational", control_hts) \
-        .subscribe_intent("c0wtschpotato:Conversational", control_pc) \
-        .subscribe_intent("c0wtschpotato:Conversational", intent_fertig)\
-        .start()
+        h.subscribe_intent("c0wtschpotato:Conversational", action_wrapper).start()
+        # .subscribe_intent("c0wtschpotato:Conversational", control_hts) \
+        # .subscribe_intent("c0wtschpotato:Conversational", control_pc) \
+        # .subscribe_intent("c0wtschpotato:Conversational", intent_fertig)\
+        
