@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from hermes_python.hermes import Hermes
-import socket, time, configparser
+import socket, time, configparser,json
 import paho.mqtt.client as mqtt
 syn_couch = ["couch","sofa","led", "LED","kautsch"]## eigentlich sinnlos, von snips wird nur die eingestellte intent übertragen. synonyme müssen in der console gepflegt werden.
 syn_iiyama = ["bildschirm","screen", "ijama","iiyama","iyama","iljama","kleiner","monitor"]
