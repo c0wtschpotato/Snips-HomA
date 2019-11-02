@@ -14,6 +14,7 @@ PORT = 1883
 client = mqtt.Client()
 
 def action_wrapper(hermes, intent_message):
+
 	config.read(cfgpath)
 	# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	# s.connect(('192.168.1.107', 10000))
