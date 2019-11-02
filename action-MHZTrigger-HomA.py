@@ -43,7 +43,7 @@ def action_wrapper(hermes, intent_message):
             result_sentence = first+" an"
             config['11001']['3'] = '1'
             payload ={"function":"setalltocolor",
-                "basecolor":colorcomb,
+                "basecolor":{"r":"255","g":"120","b":"60"},
                 "runningcolor":{"r":"255","g":"120","b":"60"},
                 "number_of_running":"5",
                 "sleep_time":"0.1"}
@@ -55,7 +55,7 @@ def action_wrapper(hermes, intent_message):
             config['11001']['3'] = '0'
             result_sentence = first+" aus"
             payload ={"function":"setalltocolor",
-                "basecolor":colorcomb,
+                "basecolor":{"r":"0","g":"0","b":"0"},
                 "runningcolor":{"r":"0","g":"0","b":"0"},
                 "number_of_running":"5",
                 "sleep_time":"0.1"}
