@@ -3,6 +3,7 @@
 
 from hermes_python.hermes import Hermes
 import socket, time, configparser
+import paho.mqtt.client as mqtt
 syn_couch = ["couch","sofa","led", "LED","kautsch"]## eigentlich sinnlos, von snips wird nur die eingestellte intent übertragen. synonyme müssen in der console gepflegt werden.
 syn_iiyama = ["bildschirm","screen", "ijama","iiyama","iyama","iljama","kleiner","monitor"]
 syn_fernseher =["fernseher", "großer", "groß", "gross", "philips","filips"]
@@ -10,6 +11,10 @@ syn_schlafzimmerlampe = ["schlafzimmerlampe","salzlampe","bettlampe"]
 
 config = configparser.ConfigParser()
 cfgpath = "cfg.ini"
+
+HOST = '192.168.1.103'
+PORT = 1883
+client = mqtt.Client()
 
 def action_wrapper(hermes, intent_message):
 
@@ -37,11 +42,26 @@ def action_wrapper(hermes, intent_message):
             # s.send(b'11001-3-1')
             result_sentence = first+" an"
             config['11001']['3'] = '1'
+            payload ={"function":"setalltocolor",
+                "basecolor":colorcomb,
+                "runningcolor":{"r":"255","g":"120","b":"60"},
+                "number_of_running":"5",
+                "sleep_time":"0.1"}
+            client.connect(HOST, 1883, 60)
+            data = json.dumps(payload)
+            client.publish("HomA/ledstrip1/set_status",data)
         if second == "aus":
             # s.send(b'11001-3-0')
             config['11001']['3'] = '0'
             result_sentence = first+" aus"
-    
+            payload ={"function":"setalltocolor",
+                "basecolor":colorcomb,
+                "runningcolor":{"r":"0","g":"0","b":"0"},
+                "number_of_running":"5",
+                "sleep_time":"0.1"}
+            client.connect(HOST, 1883, 60)
+            data = json.dumps(payload)
+            client.publish("HomA/ledstrip1/set_status",data)
     if first in  syn_iiyama: ###steuerung der syn_iiyama An/Aus
         if second == "an" or second == "":
             # s.send(b'11001-2-1')
