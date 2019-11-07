@@ -51,7 +51,8 @@ def action_wrapper(hermes, intent_message):
 	if first == "bluetooth":
 		config["philips"]["targetchannel"] = "2"
 		result_sentence = "schalte um"
-	if first == "pc":		
+	if first == "pc":
+		send_magic_packet('30.9C.23.D0.DA.A7')
 		config["11001"]["1"] = second
 		with open(cfgpath, 'w') as configfile:
 			config.write(configfile)
