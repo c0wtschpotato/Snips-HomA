@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from hermes_python.hermes import Hermes
 import socket, time, sys, configparser, os, ws2801effects,threading
-
+from wakeonlan import send_magic_packet
 
 syn_smooth = ["weich","smooth","sanfter wechsel"]
 syn_blinken =["blinken", "flash"]
