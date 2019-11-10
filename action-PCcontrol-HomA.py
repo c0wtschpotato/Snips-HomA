@@ -9,6 +9,10 @@ client = mqtt.Client()
 def action_wrapper(hermes, intent_message):
 	client.connect("192.168.1.103", 1883, 60)
 	print("publishing message to"+str(intent_message.slots.message.first().value))
+	if not intent_message.slots.message.first():
+		current_session_id = intent_message.session_id
+		hermes.publish_end_session(current_session_id, "Mediasteuerung abgebochen")
+
 	client.publish(intent_message.slots.channel.first().value,intent_message.slots.message.first().value)
 	print("published message")
 	current_session_id = intent_message.session_id
