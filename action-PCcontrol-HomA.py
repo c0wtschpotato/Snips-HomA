@@ -14,7 +14,7 @@ def action_wrapper(hermes, intent_message):
 		hermes.publish_end_session(current_session_id, "Mediasteuerung abgebochen")
 
 	client.publish(intent_message.slots.channel.first().value,intent_message.slots.message.first().value)
-	print("published message")
+	print("published message"+ intent_message.slots.channel.first().value+" "+intent_message.slots.message.first().value)
 	current_session_id = intent_message.session_id
 	hermes.publish_end_session(current_session_id, "")
 
