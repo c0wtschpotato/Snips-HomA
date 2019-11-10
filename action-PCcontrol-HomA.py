@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import paho.mqtt.client as mqtt
-
+from hermes_python.hermes import Hermes
 def action_wrapper(hermes, intent_message):
 	client.connect("192.168.1.103", 1883, 60)
 	print("publishing message to"+str(intent_message.slots.message.first().value))
