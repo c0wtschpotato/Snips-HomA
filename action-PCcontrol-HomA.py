@@ -8,6 +8,10 @@ client = mqtt.Client()
 
 def action_wrapper(hermes, intent_message):
 	client.connect("192.168.1.103", 1883, 60)
+	try:
+		channel = intent_message.slots.channel.first().value
+	except:
+		channel = "media"
 	print("publishing message to"+str(intent_message.slots.message.first().value))
 	if len(intent_message.slots.message.first())< 1:
 		current_session_id = intent_message.session_id
