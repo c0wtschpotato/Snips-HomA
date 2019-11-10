@@ -12,8 +12,13 @@ def action_wrapper(hermes, intent_message):
 		channel = intent_message.slots.channel.first().value
 	except:
 		channel = "media"
-		
-	client.publish("HomA/"+channel,intent_message.slots.message.first().value)
+	try:
+		msg = "intent_message.slots.message.first().value"
+	except:
+		current_session_id = intent_message.session_id
+		hermes.publish_end_session(current_session_id, "Zugriff abgebrochen")
+
+	client.publish("HomA/"+channel,)
 	# print("published message"+ channel" "+intent_message.slots.message.first().value)
 	current_session_id = intent_message.session_id
 	hermes.publish_end_session(current_session_id, "")
