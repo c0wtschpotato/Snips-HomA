@@ -9,7 +9,7 @@ client = mqtt.Client()
 def action_wrapper(hermes, intent_message):
 	client.connect("192.168.1.103", 1883, 60)
 	print("publishing message to"+str(intent_message.slots.message.first().value))
-	client.publish(intent_message.slots.message.first().value,intent_message.slots.channel.second().value)
+	client.publish(intent_message.slots.message.first().value,intent_message.slots.channel.first().value)
 
 
 
