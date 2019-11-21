@@ -12,7 +12,7 @@ syn_schlafzimmerlampe = ["schlafzimmerlampe","salzlampe","bettlampe"]
 config = configparser.ConfigParser()
 cfgpath = "cfg.ini"
 
-HOST = '192.168.1.103'
+HOST = '192.168.1.107'
 PORT = 1883
 client = mqtt.Client()
 

@@ -9,7 +9,7 @@ syn_blinken =["blinken", "flash"]
 config = configparser.ConfigParser()
 cfgpath = "cfg.ini"
 #/home/pi/HomeAutomation-python-Base/
-HOST = '192.168.1.103'
+HOST = '192.168.1.107'
 PORT = 1883
 client = mqtt.Client()
 

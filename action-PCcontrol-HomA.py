@@ -7,7 +7,7 @@ client = mqtt.Client()
 
 
 def action_wrapper(hermes, intent_message):
-	client.connect("192.168.1.103", 1883, 60)
+	client.connect("192.168.1.107", 1883, 60)
 	try:
 		channel = intent_message.slots.channel.first().value
 	except:
