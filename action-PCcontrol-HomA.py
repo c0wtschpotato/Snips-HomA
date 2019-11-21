@@ -13,6 +13,10 @@ def action_wrapper(hermes, intent_message):
 	except:
 		channel = "media"
 	try:
+		msg = intent_message.slots.amount.first().value
+	except:
+		pass
+	try:
 		msg = intent_message.slots.message.first().value
 	except:
 		current_session_id = intent_message.session_id
