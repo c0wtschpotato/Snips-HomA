@@ -19,8 +19,7 @@ def action_wrapper(hermes, intent_message):
 	try:
 		msg = intent_message.slots.message.first().value
 	except:
-		current_session_id = intent_message.session_id
-		hermes.publish_end_session(current_session_id, "Zugriff abgebrochen")
+		pass
 
 	client.publish("HomA/"+channel,msg)
 	# print("published message"+ channel" "+intent_message.slots.message.first().value)

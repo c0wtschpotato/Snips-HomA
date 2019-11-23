@@ -47,7 +47,7 @@ def action_wrapper(hermes, intent_message):
                 "runningcolor":{"r":"255","g":"120","b":"60"},
                 "number_of_running":"5",
                 "sleep_time":"0.1"}
-            client.connect(HOST, 1883, 60)
+            client.connect(HOST , 1883, 60)
             data = json.dumps(payload)
             client.publish("HomA/ledstrip1/set_status",data)
         if second == "aus":
