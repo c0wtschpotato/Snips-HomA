@@ -57,7 +57,7 @@ def action_wrapper(hermes, intent_message):
 			send_magic_packet('30.9C.23.D0.DA.A7')
 		if second == "0":
 			client = mqtt.Client()
-			client.connect("192.168.1.103", 1883, 60)
+			client.connect("192.168.1.107", 1883, 60)
 			client.publish("HomA/pc","shutdown")
 		config["11001"]["1"] = second
 		with open(cfgpath, 'w') as configfile:
