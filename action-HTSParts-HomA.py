@@ -38,7 +38,7 @@ def action_wrapper(hermes, intent_message):
 		# else:
 			config["philips"]["power"] = 1
 			result_sentence = "erledigt."
-		else
+		else:
 			config["philips"]["power"] = 0
 			result_sentence = "erledigt."
 	if first == "lauter":
