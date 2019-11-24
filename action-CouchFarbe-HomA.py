@@ -139,6 +139,7 @@ def action_wrapper(hermes, intent_message):
 		payload= {"function":"rainbow_colors"}
 		data = json.dumps(payload)
 		client.publish("HomA/ledstrip1/set_status",data)
+		return
 
 	if first == "white 1":
 		config["couchled"]["color"] = "white1"
