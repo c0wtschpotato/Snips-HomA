@@ -135,7 +135,7 @@ def action_wrapper(hermes, intent_message):
 		# time.sleep(0.1)
 		# s.send(b'couchled-brightness_down-1')
 		config["couchled"]["brightness_down"] = "1"
-	if first == "regenbogen":
+	if first == "rainbow_colors":
 		payload= {"function":"rainbow_colors"}
 		data = json.dumps(payload)
 		client.publish("HomA/ledstrip1/set_status",data)
