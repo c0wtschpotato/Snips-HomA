@@ -148,7 +148,7 @@ def action_wrapper(hermes, intent_message):
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
 	# s.close()
-	if colorcomb:
+	try colorcomb:
 		payload ={"function":"setalltocolor",
 			"basecolor":colorcomb,
 			"runningcolor":{"r":"255","g":"0","b":"0"},
@@ -156,6 +156,8 @@ def action_wrapper(hermes, intent_message):
 			"sleep_time":"0.1"}
 		data = json.dumps(payload)
 		client.publish("HomA/ledstrip1/set_status",data)
+	except:
+		pass
 	
 	
 	current_session_id = intent_message.session_id
