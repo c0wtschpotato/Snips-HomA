@@ -148,7 +148,7 @@ def action_wrapper(hermes, intent_message):
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
 	# s.close()
-	try colorcomb:
+	try :
 		payload ={"function":"setalltocolor",
 			"basecolor":colorcomb,
 			"runningcolor":{"r":"255","g":"0","b":"0"},
