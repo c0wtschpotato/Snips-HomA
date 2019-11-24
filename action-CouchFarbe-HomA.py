@@ -135,7 +135,8 @@ def action_wrapper(hermes, intent_message):
 		# time.sleep(0.1)
 		# s.send(b'couchled-brightness_down-1')
 		config["couchled"]["brightness_down"] = "1"
-		
+	if first == "regenbogen":
+		payload= {"function":"rainbow_colors"}
 	if first == "white 1":
 		config["couchled"]["color"] = "white1"
 		colorcomb = {"r":"255","g":"120","b":"60"}
