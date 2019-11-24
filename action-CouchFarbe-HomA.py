@@ -137,9 +137,13 @@ def action_wrapper(hermes, intent_message):
 		config["couchled"]["brightness_down"] = "1"
 	if first == "regenbogen":
 		payload= {"function":"rainbow_colors"}
+		data = json.dumps(payload)
+		client.publish("HomA/ledstrip1/set_status",data)
+
 	if first == "white 1":
 		config["couchled"]["color"] = "white1"
 		colorcomb = {"r":"255","g":"120","b":"60"}
+
 	with open(cfgpath, 'w') as configfile:
 		config.write(configfile)
 	# s.close()
