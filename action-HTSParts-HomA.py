@@ -32,14 +32,14 @@ def action_wrapper(hermes, intent_message):
 	
 
 	if first == "HTS":
-		if config["philips"]["power"] == 0:### disabled check since i want to trigger it always
+		if config["philips"]["power"] == "0":### disabled check since i want to trigger it always
 		
 		# 	result_sentence = "HTS nicht geschalten"
 		# else:
-			config["philips"]["power"] = 1
+			config["philips"]["power"] = "1"
 			result_sentence = "erledigt."
 		else:
-			config["philips"]["power"] = 0
+			config["philips"]["power"] = "0"
 			result_sentence = "erledigt."
 	if first == "lauter":
 		config["philips"]["vol_up"] = "1"
